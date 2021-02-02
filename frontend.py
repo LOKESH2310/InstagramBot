@@ -5,6 +5,9 @@ from selenium.common.exceptions import NoSuchElementException
 from tkinter import *
 w = Tk()
 w.geometry("1000x620")
+bg = PhotoImage(file = "bg.png")
+label1 = Label( w, image = bg)
+label1.place(x = 0, y = 0)
 
 #labels and entries
 Label(w, text=' INSTAGRAM ID : ' ).place(x=300,y=40)
@@ -35,9 +38,10 @@ scrollbar.config(command=listNodes.yview)
 username = id.get()
 pw = pas.get()
 driver = driver()
-get_unfollowers(driver, username)
-for i in range(len(get_unfollowers(driver, username))):
-    listNodes.insert(END, get_unfollowers(driver, username)[i])
+def unfol():
+    get_unfollowers(driver, username)
+    for i in range(len(get_unfollowers(driver, username))):
+        listNodes.insert(END, get_unfollowers(driver, username)[i])
 
 
 
@@ -49,7 +53,7 @@ for i in range(len(get_unfollowers(driver, username))):
 button1 = Button(w, text='LOGIN', width=15, command=lambda:login(driver, username, pw))
 button1.pack()
 button1.place(x= 350 , y = 120)
-button2 = Button(w, text='UNFOLLOWERS', width=15, command = unfol )
+button2 = Button(w, text='UNFOLLOWERS', width=15, command= unfol )
 button2.pack()
 button2.place(x= 100 , y= 180 )
 button3 = Button(w, text='FOLLOWERS', width=15,)
