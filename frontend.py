@@ -6,25 +6,62 @@ driver = driver()
 
 from tkinter import *
 w = Tk()
-w.geometry("1000x620")
+w.geometry("800x620")
+w.title("Insta:)Bot")
 bg = PhotoImage(file = "bg.png")
-label1 = Label( w , image = bg)
+label1 = Label( w  , image = bg)
 label1.place(x = 0, y = 0)
 
+def about():
+    w2 = Toplevel()
+    w2.geometry("400x400")
+    w2.title("About... ")
+    bg = PhotoImage(file="bg.png")
+    label1 = Label(w2 , image=bg)
+    label1.place(x=0, y=0)
+    listbox = Listbox(w2 , height = 20 , width=35, font=("Helvetica", 12))
+    listbox.place(x=20, y=20)
+    w2.mainloop()
+
+def win2():
+    w2 = Toplevel()
+    w2.geometry("400x400")
+    w2.title("Direct Message ")
+    bg = PhotoImage(file="bg.png")
+    label1 = Label(w2 , image=bg)
+    label1.place(x=0, y=0)
+    Text(w2 , height = 15 , width = 32).place(x=50 , y = 100)
+    Checkbutton(w2 , text= "followers").place(x=55 , y = 40)
+    Checkbutton(w2, text="following").place(x=180, y=40)
+    w2.mainloop()
+
+
 #labels and entries
-Label(w, text=' INSTAGRAM ID : ' ).place(x=300,y=60)
-Label(w, text='PASSWORD :').place(x=300,y=100)
+lab1 = Label(w, text='Instagram bot' , font=("Helvetica", 32) , bg = "#b1eff2").place(x=250,y=20)
+Label(w, text=' INSTAGRAM ID : ' ,font=("Helvetica", 12) , bg = "#b1eff2").place(x=230,y=100)
+Label(w, text='PASSWORD :' ,font=("Helvetica", 12) ,  bg ="#b1eff2" ).place(x=250,y=140)
 id = StringVar()
 id.set("Login id")
 pas = StringVar()
-e1 = Entry(w, textvariable= id).place(x=400,y=60)
-e2 = Entry(w, textvariable = pas , show = "*").place(x=400,y=100)
+e1 = Entry(w, textvariable= id , font=("Helvetica", 12) ).place(x=370,y=100)
+e2 = Entry(w, textvariable = pas , font=("Helvetica", 12) , show = "*").place(x=370,y=140)
+
+#menu
+menu = Menu(w)
+w.config(menu=menu)
+filemenu = Menu(menu)
+menu.add_cascade(label='File', menu=filemenu)
+filemenu.add_command(label='Exit', command=w.quit)
+helpmenu = Menu(menu)
+menu.add_cascade(label='Help', menu=helpmenu)
+helpmenu.add_command(label='About' , command = about )
 
 
 
 #listbox
-listbox = Listbox(w,  width=100, font=("Helvetica", 12))
+listbox = Listbox(w,  width=75, font=("Helvetica", 12))
 listbox.place(x= 60 , y = 300 )
+
 
 def log():
     username=id.get()
@@ -65,13 +102,15 @@ def foling():
 #buttons
 
 button1 = Button(w, text='Log In', width=15 ,activebackground = "magenta2" , bd= 3 , bg = "LightSkyBlue1" , font = "Lato" , command = log)
-button1.place(x= 350 , y = 150)
+button1.place(x= 310 , y = 180)
 button2 = Button(w, text='Un-followers', width=15 , activebackground = "magenta2" , bd= 3 , bg = "plum1", font = "Lato" , command = unfol )
-button2.place(x= 90 , y= 200 )
+button2.place(x= 90 , y= 250 )
 button3 = Button(w, text='Followers', width=15, activebackground = "magenta2" , bd= 3 , bg = "plum1" , font = "Lato" , command = foll)
-button3.place(x= 240 , y= 200 )
+button3.place(x= 240 , y= 250 )
 button4 = Button(w, text='Following', width=15 , activebackground = "magenta2" , bd= 3 , bg = "plum1" , font = "Lato" , command = foling )
-button4.place(x= 390 , y= 200 )
+button4.place(x= 390 , y= 250 )
+button4 = Button(w, text='new', width=15 , activebackground = "magenta2" , bd= 3 , bg = "plum1" , font = "Lato" , command = win2)
+button4.place(x= 540 , y= 250 )
 
 
 
