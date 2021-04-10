@@ -1,2 +1,3 @@
 # InstagramBot
-InstagramBOT
+Tkinter - Frontend
+Selenium - Backend
