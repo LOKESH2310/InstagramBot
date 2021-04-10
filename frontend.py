@@ -1,6 +1,5 @@
 from backend import *
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
 from tkinter import *
 driver = driver()
 
